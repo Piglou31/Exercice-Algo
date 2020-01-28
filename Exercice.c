@@ -18,6 +18,8 @@ int main (){
 		int attaquemonstre2 = 10;
 		int decisionM1 = 0;
 		int decisionM2 = 0;
+		int ExperienceT = 0;
+		int lvlT = 0;
 	
 	//Stats Alchimiste
 		int antidote = 0;
@@ -25,7 +27,6 @@ int main (){
 		int pvAlch = 100;
 		int PMAlch = 10;
 		int decisionA = 0;
-		
 		
 	//Stats Tank
 		int pvTank =130;
@@ -551,6 +552,29 @@ int main (){
 	provoc =0;
 	glace1 =0;
 	glace2 = 0;
+	
+	if(pvmonstre1<=0){
+		printf ("vous gagnez 5 point d'experience\n");
+		ExperienceT = ExperienceT + 5;
+		pvmonstre1=100;
+		if (ExperienceT >=20 ){
+			printf("vous gagnez un niveau !");
+			lvlT++ ;
+			ExperienceT = ExperienceT - 20;
+		}
+		
+	}
+	if(pvmonstre2<=0){
+		printf ("vous gagnez 5 point d'experience\n");
+		ExperienceT = ExperienceT + 5;
+		pvmonstre2=70;
+		if (ExperienceT >=20 ){
+			printf("vous gagnez un niveau !\n");
+			lvlT++ ;
+			ExperienceT = ExperienceT - 20;
+		}
+		
+	}
 	}	
 	
 	
