@@ -6,14 +6,18 @@
 int main (){
 	
 	//Monstre et autres
-		int pvmonstre = 100;
-		int attaquejoueur = 10;
+		int pvmonstre2 = 70;
+		int attaquejoueur1 = 10;
+		int attaquejoueur2 = 10;
 		int attaquemonstre = 10;
 		int decisionM = 0;
 		int PMmonstre = 10;
 		int poisonM = 0;
-		int nombreMonstres = 1;
-	
+		int Monstre = 1;
+		int pvmonstre1 =100;
+		int attaquemonstre2 = 10;
+		int decisionM1 = 0;
+		int decisionM2 = 0;
 	
 	//Stats Alchimiste
 		int antidote = 0;
@@ -31,69 +35,89 @@ int main (){
 		
 	srand(time(NULL));
 
-	while(pvmonstre>0 ){
+	while(pvmonstre1>0 ){
 		
 		
 		//Tour du Tank
-		if (pvmonstre>0 && pvTank>0)
+		if (pvTank>0)
 			
 		printf ("Tour du Tank :Voulez vous attaquer (1) vous defendre (2) ou provoquer les monstres (3) ?\n");
 		scanf("%d",&decisionT);
-		decisionM =((rand()%3)+1);
-		
-		
-			
-			
-			if(decisionM == 3 && PMmonstre<3){
-				(decisionM =((rand()%2)+1));
-				}
-		
-			if (decisionM == 3 && PMmonstre>=3){
-			printf("Le monstre vous empoisonne.\n");
-			poisonM ++;
-			PMmonstre = PMmonstre -3;
-				}
-				
-			if (decisionM == 2){
-			printf("Le monstre se defend.\n");
-			attaquejoueur = attaquejoueur/4;		
-				}
+		decisionM1 =((rand()%3)+1);
+		decisionM2 =((rand()%3)+1);
+
 			
 			if (decisionT == 2){
 			printf("Vous decidez de vous defendre.\n");
-			attaquemonstre = attaquemonstre/4;
+			attaquemonstre = attaquemonstre /4;
 				}
-		
-			if(decisionT == 1){
-			printf("Vous decidez de l'attaquer.\n");
-			pvmonstre = pvmonstre - attaquejoueur;
-				}	
 				
-			if(decisionM == 1){
-			printf("Le monstre vous attaque.\n");
+				
+			if(decisionT == 1){
+			printf("Vous decidez d'attaquer.\n");
+			printf("Quelmonstre voulez-vous attaquer ? (1) ou (2)\n");
+			scanf("%d",&Monstre);
+				if (decisionM2 == 2){
+					printf("Le monstre 2 se defend.\n");
+					attaquejoueur2 = attaquejoueur2 /4;		
+				}
+				if (decisionM1 == 2){
+					printf("Le monstre 1 se defend.\n");
+					attaquejoueur1 = attaquejoueur1 /4;		
+				}
+				
+				if(Monstre == 1){
+					printf("Vous decidez d'attaquer le monstre 1.\n");
+					pvmonstre1 = pvmonstre1 - attaquejoueur1;
+				}	
+				if (Monstre == 2 ){
+					printf("Vous decidez d'attaquer le monstre 2.\n");
+					pvmonstre2 = pvmonstre2 - attaquejoueur2;
+				}
+			}
+			if(decisionM1 == 1){
+			printf("Le monstre 1 vous attaque.\n");
 			pvTank = pvTank - attaquemonstre;
 				}
-			
+				
+			if(decisionM2 == 1){
+			printf("Le monstre 2 vous attaque.\n");
+			pvTank = pvTank - attaquemonstre2;
+				}
+				
 			if(decisionT == 3 ){
 			printf ("Vous provoquez les monstres\n");
 			provoc = 1;
 				}	
+				
+				if (decisionM1 == 3){
+			printf("Le monstre 1 vous empoisonne.\n");
+			poisonM ++;
+				}
+				
+			if (decisionM2 == 3){
+			printf("Le monstre 2 vous empoisonne.\n");
+			poisonM ++;
+				}
 			
-			printf ("Le monstre a %d points de vie.\n", pvmonstre);
+			printf ("Le monstre 1 a %d points de vie.\n", pvmonstre1);
+			printf ("Le monstre 2 a %d points de vie.\n", pvmonstre2);
 			printf ("Il vous reste %d points de vie.\n", pvTank);
-			
+			attaquemonstre = 10 ;
+			attaquejoueur1 = 10;
+			attaquejoueur2 = 10;
 			
 			
 			
 			
 		//Tour de l'Alchimiste
-		if (pvmonstre>0 && pvAlch>0){
+		if ( pvAlch>0){
 			
 		
 		printf ("Tour de l'alchimiste : Voulez vous attaquer (1) vous defendre (2) empoisonner les monstres (3) ou utiliser un antidote (4)?\n");
 		scanf("%d",&decisionA);
-		decisionM =((rand()%3)+1);
-		
+		decisionM1 =((rand()%3)+1);
+		decisionM2 =((rand()%3)+1);
 		
 			if (decisionA == 4){
 			printf("Vous utilisez votre antidote, vous n'etes plus empoisonne \n");
@@ -112,23 +136,9 @@ int main (){
 			PMAlch = PMAlch -3;
 				}
 		
-		
-			if(decisionM == 3 && PMmonstre<3){
-				(decisionM =((rand()%2)+1));
-				}
-		
-			if (decisionM == 3 && PMmonstre>=3){
-			printf("Le monstre vous empoisonne.\n");
-			poisonM ++;
-			PMmonstre = PMmonstre -3;
-				}
-		
+				
 			
-			if (decisionM == 2){
-			printf("Le monstre se defend.\n");
-			attaquejoueur = attaquejoueur/4;		
-				}
-		
+				
 			if (decisionA == 2){
 			printf("Vous decidez de vous defendre.\n");
 			attaquemonstre = attaquemonstre/4;
@@ -136,33 +146,74 @@ int main (){
 				}
 		
 			if(decisionA == 1){
-			printf("Vous decidez de l'attaquer.\n");
-			pvmonstre = pvmonstre - attaquejoueur;
-			
+			printf("Vous decidez d'attaquer.\n");
+			printf("Quelmonstre voulez-vous attaquer ? (1) ou (2)\n");
+			scanf("%d",&Monstre);
+			if (decisionM2 == 2){
+					printf("Le monstre 2 se defend.\n");
+					attaquejoueur2 = attaquejoueur2 /4;		
+				}
+			if (decisionM1 == 2){
+					printf("Le monstre 1 se defend.\n");
+					attaquejoueur1 = attaquejoueur1 /4;		
 				}
 			
-			if(decisionM == 1 && provoc == 1){
+				if(Monstre == 1){
+					printf("Vous decidez d'attaquer le monstre 1.\n");
+					pvmonstre1 = pvmonstre1 - attaquejoueur1;
+				}	
+				if(Monstre == 2 ){
+					printf("Vous decidez d'attaquer le monstre 2.\n");
+					pvmonstre2 = pvmonstre2 - attaquejoueur2;
+				}
+			}
+			
+			if(decisionM1 == 1 && provoc == 1){
 			printf("Le monstre attaque le Tank.\n");
 			pvTank = pvTank - attaquemonstre;
-			
 				}
-			if(decisionM == 1 && provoc == 0){
+				
+			if(decisionM1 == 1 && provoc == 0){
 			printf("Le monstre vous attaque.\n");
 			pvAlch = pvAlch - attaquemonstre;
-			
+				}
+				
+			if(decisionM2 == 1 && provoc == 1){
+			printf("Le monstre attaque le Tank.\n");
+			pvTank = pvTank - attaquemonstre;
+				}
+				
+			if(decisionM2 == 1 && provoc == 0){
+			printf("Le monstre vous attaque.\n");
+			pvAlch = pvAlch - attaquemonstre;
 				}
 		
 			if(poisonA >= 1){
-			pvmonstre = pvmonstre - poisonA;
+			pvmonstre1 = pvmonstre1 - poisonA;
+			pvmonstre2 = pvmonstre2 - poisonA;
 				}
 			
 			if(poisonM >= 1){
 			pvAlch = pvAlch - poisonM;
 				}
+				
+				if (decisionM1 == 3 ){
+			printf("Le monstre 1 vous empoisonne.\n");
+			poisonM ++;
+				}
+				
+			if (decisionM2 == 3 ){
+			printf("Le monstre 2 vous empoisonne.\n");
+			poisonM ++;
+				}
 			
-			printf ("Le monstre a %d points de vie.\n", pvmonstre);
+			printf ("Le monstre 1 a %d points de vie.\n", pvmonstre1);
+			printf ("Le monstre 2 a %d points de vie.\n", pvmonstre2);
 			printf ("Il vous reste %d points de vie.\n", pvAlch);
 			printf ("Il vous reste %d points de mana.\n", PMAlch);
+			attaquemonstre = 10 ;
+			attaquejoueur1 = 10;
+			attaquejoueur2 = 10;
 		}
 		
 			
@@ -179,8 +230,9 @@ int main (){
 	}
 	
 	
-	attaquemonstre = 10 * nombreMonstres;
-	attaquejoueur = 10;
+	attaquemonstre = 10 ;
+	attaquejoueur1 = 10;
+	attaquejoueur2 = 10;
 	provoc =0;
 		
 	}	
